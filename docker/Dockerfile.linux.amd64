@@ -1,0 +1,11 @@
+FROM alpine
+
+LABEL maintainer="Koyo <duanquanyong@outlook.com>" \
+  org.label-schema.name="go-bindata" \
+  org.label-schema.vendor="Koyo" \
+  org.label-schema.schema-version="1.0"
+
+ADD release/linux/amd64/go-bindata /bin/
+ADD drone-go-bindata.sh /bin/
+RUN chmod +x /bin/drone-go-bindata.sh
+ENTRYPOINT ["/bin/go-bindata"]
