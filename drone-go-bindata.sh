@@ -5,14 +5,9 @@ cmd="/bin/go-bindata"
 if [ -n "$PLUGIN_OUTPUT" ]; then
     cmd="$cmd -o $PLUGIN_OUTPUT"
 fi
-if [ -n "$PLUGIN_O" ]; then
-    cmd="$cmd -o $PLUGIN_O"
-fi
-
 if [ -n "$PLUGIN_PKG" ]; then
     cmd="$cmd -pkg $PLUGIN_PKG"
 fi
-
 if [ -n "$PLUGIN_IGNORE" ]; then
     cmd="$cmd -ignore $PLUGIN_IGNORE"
 fi
@@ -43,6 +38,8 @@ fi
 if [ -n "$PLUGIN_TAGS" ]; then
     cmd="$cmd -tags $PLUGIN_TAGS"
 fi
+
+cmd="$cmd $PLUGIN_INPUT"
 
 echo $cmd
 eval $cmd

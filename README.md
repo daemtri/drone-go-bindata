@@ -53,7 +53,10 @@ docker build \
 
 ```
 docker run --rm \
-  -e "PLUGIN_ARGS=-o resource/bindata.go -pkg resource -ignore .*\.less$  assets/..." \
+  -e "PLUGIN_OUTPUT=resource/bindata.go" \
+  -e "PLUGIN_PKG=resource" \
+  -e "PLUGIN_IGNORE=.*\.less$" \
+  -e "PLUGIN_INPUT=assets/..." \
   -v $(pwd):$(pwd) \
   -w $(pwd) \
   koyo/drone-go-bindata
