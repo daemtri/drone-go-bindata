@@ -12,7 +12,12 @@ steps:
 - name: go-bindata
   image: koyo/drone-go-bindata
   settings:
-    args: -o resource/bindata.go -pkg resource -ignore .*\.less$  assets/...
+    output: resource/bindata.go
+    pkg: resource
+    ignore:
+    - .*\.less$
+    - assets/...
+    fs: true
 - name: backend
   image: golang
   commands:
