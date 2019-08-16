@@ -1,5 +1,5 @@
 FROM alpine
-
+MAINTAINER Koyo 
 LABEL maintainer="Koyo <duanquanyong@outlook.com>" \
   org.label-schema.name="go-bindata" \
   org.label-schema.vendor="Koyo" \
