@@ -5,7 +5,15 @@ LABEL maintainer="Koyo <duanquanyong@outlook.com>" \
   org.label-schema.vendor="Koyo" \
   org.label-schema.schema-version="1.0"
 
+RUN echo "https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/main/" > /etc/apk/repositories
+RUN apk update \
+        && apk upgrade \
+        && apk add --no-cache bash \
+        bash-doc \
+        bash-completion \
+        && rm -rf /var/cache/apk/* \
+        && /bin/bash
 ADD release/linux/amd64/go-bindata /bin/
-ADD drone-go-bindata.sh /bin/
-RUN chmod +x /bin/drone-go-bindata.sh
-ENTRYPOINT ["/bin/go-bindata"]
+ADD drone-go-bindata.sh /bin/drone-go-bindata
+RUN chmod +x /bin/drone-go-bindata
+ENTRYPOINT /bin/drone-go-bindata
